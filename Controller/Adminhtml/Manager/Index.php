@@ -44,24 +44,6 @@ class Index extends \Magento\Backend\App\Action
      * Load the page defined in view/adminhtml/layout/exampleadminnewpage_helloworld_index.xml
      *
      */
-//    public function setValue()
-//    {
-//        $this->_coreSession->start();
-//        $this->_coreSession->setName('success');
-//    }
-//
-//    public function getValueSession()
-//    {
-//        $this->_coreSession->start();
-//        return $this->_coreSession->getName();
-//    }
-//
-//    public function unSetValue()
-//    {
-//        $this->_coreSession->start();
-//        return $this->_coreSession->clearStorage();
-//    }
-
     public function execute()
     {
 //        echo $this->scopeConfig->getValue('web_id', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);die;
@@ -75,7 +57,4 @@ class Index extends \Magento\Backend\App\Action
         }
         return $resultPage = $this->resultPageFactory->create();
     }
-//    private function cleanMageCache(){
-//        return $this->cache->clean(\Zend_Cache::CLEANING_MODE_ALL, array('FPC'));
-//    }
 }
