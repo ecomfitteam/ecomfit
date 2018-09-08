@@ -1,0 +1,25 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Hello
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2017 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+
+<script type="text/javascript">
+    <?php if($block->getWebId() !== null){?>
+    (function (w, d, s, id, src) {
+        if (d.getElementById(id)) return;
+        var js, fjs = d.getElementsByTagName(s)[0];
+        js = d.createElement(s);
+        js.id = id;
+        js.src = src;
+        fjs.parentNode.insertBefore(js, fjs);
+    })(window, document, 'script', 'ecomfit-sdk', 'http://tracking-test.ecomfit.com/tracking.js#v=280518&webId=<?=$block->getWebId()?>');
+    <?php }?>
+</script>
+<?php //echo $block->getJs(); //method call from block ?>

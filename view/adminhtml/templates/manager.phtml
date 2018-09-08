@@ -1,0 +1,208 @@
+<?php
+/** @var \Ecomfit\Tracking\Block\Ecomfit $block */
+?>
+
+
+<section>
+    <div class="container">
+        <?php
+        $webId = $block->getWebId();
+        if ((!isset($webId) || $webId == null) && !$block->checkSession()) { ?>
+            <header class="ecomfit-section-header">
+                <div class="col-12 text-center">
+                    <strong><img style="border-radius: 5px; margin-bottom: 10px;"
+                                 src="<?php echo $block->getViewFileUrl('Ecomfit_Tracking::img/ecomfit.jpg'); ?>"
+                                 width="180px"/></strong>
+                    <h3 class="">Hi <?php $block->getCurrentUser()->getUsername(); ?>, Welcome to Ecomfit!</h3>
+                    <hr>
+                    <h5 class="">Let's connect your online stores and join with over 50,000+ merchants are using
+                        Ecomfit to skyrocket their sales right now!</h5>
+                </div>
+                <div class="col-12 text-center">
+                    <br><br>
+                    <button href="javascript:;" onClick="ecomfitOpenChildWindow('https://app-test.ecomfit.com')"
+                            class="btn btn-lg btn-primary" style="margin-bottom: 5px;"><strong>Let Connect Now</strong>
+                    </button>
+                    <p class="">No credit cards required. Integration takes seconds.</p>
+                </div>
+            </header>
+        <?php } else { ?>
+            <header class="ecomfit-section-header">
+                <strong>
+                    <a target="_blank" href="<?php echo $block::ECOMFIT_WEBSITE; ?>"><img
+                                src="<?php echo $block->getViewFileUrl('Ecomfit_Tracking::img/ecomfit.jpg'); ?>"
+                                width="260px"/></a></strong>
+                <h5>Hi <?php echo $block->getCurrentUser()->getUsername(); ?>, Are you ready to optimize your Conversion
+                    Rate
+                    with Ecomfit?</h5>
+                <p>Strengthen by AI, tailored just for e-commerce, Ecomfit is here to help you analyze your customer's
+                    behavior and boost online sales automatically.</p>
+                <div class="col">
+                    <a class="scroll-down-1" href="#"><span></span></a>
+                </div>
+            </header>
+
+            <div class="row ecomfit-gap-y">
+                <div class="col-12 col-md-6 col-xl-6 ecomfit-feature-1">
+                    <p class="feature-icon text-success"><i class="fa fa-magic "></i></p>
+                    <h5>Suggestion</h5>
+                    <p>Ecomfit provides you with not only key metrics but also smart suggestions based on the collected
+                        data to help you make actionable decisions on how to increase sales quickly.</p>
+                    <a class="btn btn-sm btn-round w-200 btn-success mr-16"
+                       href="<?php echo $block::ECOMFIT_URL . 'report/suggestions'; ?>" target="_blank">View
+                        Suggestion</a>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-xl-6 ecomfit-feature-1">
+                    <p class="feature-icon text-warning"><i class="fa fa-warning"></i></p>
+                    <h5>Warning</h5>
+                    <p>We give warnings in real-time that can affect your revenue and help you react accordingly to
+                        suggested solutions. Don’t lose on the potential revenue by getting things correctly done!.</p>
+                    <a class="btn btn-sm btn-round w-200 btn-warning mr-16"
+                       href="<?php echo $block::ECOMFIT_URL . 'report/warnings'; ?>" target="_blank">View Warning</a>
+                </div>
+
+
+                <!-- REPORT -->
+                <div class="col-12 col-md-12 col-xl-12 ecomfit-feature-1">
+                    <p class="feature-icon text-info"><i class="fa fa-bullhorn"></i></p>
+                    <h5>All Important Metrics Is In One Place</h5>
+                    <p>Ecomfit automatically tracks customer information and generates the most important metrics for
+                        your e-commerce websites, using it to understand your customers and convert more visitors to
+                        revenue.</p>
+
+                    <div class="row ecomfit-gap-y">
+                        <div class="col-12 col-md-6 text-center  text-md-left">
+                            <h6 class="text-uppercase"><i class="fa fa-filter text-info fs-20 mb-3"></i> Sales Funnel
+                            </h6>
+                            <p class="fs-14">Funnels help us see this process (or processes) easily, by giving us a
+                                visual representation of the conversion data between each step. <a class="fw-600 fs-12"
+                                                                                                   href="<?php echo $block::ECOMFIT_URL . 'report/funnel-visualization'; ?>"
+                                                                                                   target="_blank">View
+                                    Report <i class="fa fa-chevron-right fs-9 pl-5"></i></a></p>
+                        </div>
+
+                        <div class="col-12 col-md-6 text-center  text-md-left">
+                            <h6 class="text-uppercase"><i class="fa fa-random text-info fs-20 mb-3"></i> Conversion Rate
+                            </h6>
+                            <p class="fs-14">The overall conversion rate for your store is an important metric for
+                                measuring and improving performance. <a class="fw-600 fs-12" target="_blank"
+                                                                        href="<?php echo $block::ECOMFIT_URL . 'report/conversion-rate'; ?>">View
+                                    Report <i class="fa fa-chevron-right fs-9 pl-5"></i></a></p>
+
+                        </div>
+
+                        <div class="col-12 col-md-6 text-center  text-md-left">
+                            <h6 class="text-uppercase"><i class="fa fa-forward text-info text-info fs-20 mb-3"></i>
+                                Checkout Behavior</h6>
+                            <p class="fs-14">With the Checkout Behavior report, you can see solid numbers for each step:
+                                how many made it to step one, what was the drop-off for step two, and so on.
+                                <a target="_blank" class="fw-600 fs-12"
+                                   href="<?php echo $block::ECOMFIT_URL . 'report/checkout-behavior'; ?>">View
+                                    Report <i class="fa fa-chevron-right fs-9 pl-5"></i></a></p>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-6 text-center  text-md-left">
+                            <h6 class="text-uppercase"><i class="fa fa-shopping-cart text-info fs-20 mb-3"></i> Cart
+                                Abandonment</h6>
+                            <p class="fs-14">Shopping Cart Abandonment is when shoppers add an item to a website's
+                                shopping cart, but leave before finishing the transaction. <a target="_blank"
+                                                                                              class="fw-600 fs-12"
+                                                                                              href="<?php echo $block::ECOMFIT_URL . 'report/cart-abandon'; ?>">View
+                                    Report <i class="fa fa-chevron-right fs-9 pl-5"></i></a></p>
+
+                        </div>
+
+
+                        <div class="col-12 col-md-6 text-center  text-md-left">
+                            <h6 class="text-uppercase"><i class="fa fa-usd text-info fs-20 mb-3"></i> Sale Performance
+                            </h6>
+                            <p class="fs-14">The Sales Performance Report is a powerful tool to evaluate revenue and
+                                overall sales within a defined period of time. <a class="fw-600 fs-12" target="_blank"
+                                                                                  href="<?php echo $block::ECOMFIT_URL . 'report/sale-performance'; ?>">View
+                                    Report <i class="fa fa-chevron-right fs-9 pl-5"></i></a></p>
+
+                        </div>
+
+                        <div class="col-12 col-md-6 text-center  text-md-left">
+                            <h6 class="text-uppercase"><i class="fa fa-cube text-info fs-20 mb-3"></i> Product
+                                Performance</h6>
+                            <p class="fs-14">Product Performance Report provides valuable insight into how customers are
+                                interacting with your products. <a class="fw-600 fs-12" target="_blank"
+                                                                   href="<?php echo $block::ECOMFIT_URL . 'report/product-performance'; ?>">View
+                                    Report <i class="fa fa-chevron-right fs-9 pl-5"></i></a></p>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <header class="ecomfit-section-header">
+                            <h5>Need our support? Let us know, we'll be back shortly!</h5>
+                            <p><a class="btn btn-sm btn-round w-200 btn-primary mr-16" target="_blank"
+                                  href="<?php echo $block::ECOMFIT_WEBSITE . 'contact-us.html'; ?>">Contact Us</a></p>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</section>
+<script>
+    var ecomfit_info_website = {
+        domain: document.domain,
+        url: document.URL,
+        location_href: document.location.href,
+        location_origin: document.location.origin,
+        location_hostname: document.location.hostname,
+        location_host: document.location.host,
+        location_pathname: document.location.pathname
+    };
+
+    function ecomfitLoginParent(webId) {
+        var form = document.createElement("form");
+        var webIdElement = document.createElement("input");
+
+        console.log(webId);
+        jQuery.ajax({
+            url: window.location.href,
+            type: 'post',
+            data: {
+                webId: webId
+            },
+            success: function (data) {
+                // alert('success');
+                location.reload(true);
+                // window.location.href = window.location.href.replace(/#.*$/, '');
+            }
+        });
+        // });
+    }
+
+
+    var ecomfit_interval;
+
+    function ecomfitOpenChildWindow(url_ecomfit) {
+        var urlPopup = url_ecomfit + '/auth/login?platform=4&domain=' + ecomfit_info_website.domain;
+        var child = window.open(urlPopup, 'Ratting', 'width=800,height=600,0,status=0');
+        ecomfit_interval = setInterval(function () {
+            child.postMessage({message: "requestResult"}, "*");
+        }, 500);
+    }
+
+    window.addEventListener("message", function (event) {
+        if (event.data.message === "deliverResult") {
+            var data = event.data.result.data;
+            var webId = '';
+            if (data.webId !== undefined) {
+                webId = data.webId;
+            }
+            ecomfitLoginParent(webId);
+            event.source.close();
+            clearInterval(ecomfit_interval);
+        }
+    });
+
+</script>
