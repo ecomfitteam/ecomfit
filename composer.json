@@ -1,6 +1,6 @@
 {
-    "name": "phamxuanloc/ecomfit-test",
-    "description": "This is a test module for  create admin menu and controller in Magento2",
+    "name": "ecomfitteam/ecomfit",
+    "description": "This is a ecomfit module in Magento2",
     "require": {
         "php": ">=5.6.0"
     },
