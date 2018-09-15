@@ -19,7 +19,7 @@ class Ecomfit extends \Magento\Framework\View\Element\Template
     protected $_coreSession;
 
     const ECOMFIT_WEBSITE = "https://ecomfit.com/";
-    const ECOMFIT_URL = "https://app-test.ecomfit.com/";
+    const ECOMFIT_URL = "http://localhost:4200";
 
     protected function _prepareLayout()
     {
@@ -69,6 +69,7 @@ class Ecomfit extends \Magento\Framework\View\Element\Template
     public function checkSession()
     {
         if (isset($_SESSION['webId'])) {
+            $_SESSION['webId'] = null;
             return true;
         } else {
             return false;

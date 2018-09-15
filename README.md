@@ -9,7 +9,7 @@ Ecomfit module installation is very easy, please follow the steps for installati
 ## Install with Composer as you go
 Specify the version of the module you need, and go.
     
-    composer require phamxuanloc/ecomfit-test
+    composer require ecomfitteam/ecomfit-test
     
 
 ## Run following command via terminal from magento root directory 
