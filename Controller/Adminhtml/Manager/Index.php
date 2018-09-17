@@ -15,6 +15,7 @@ class Index extends \Magento\Backend\App\Action
     protected $scopeConfig;
     protected $cache;
     protected $_coreSession;
+    protected $ecomfit;
 
     /**
      * Constructor
@@ -23,18 +24,20 @@ class Index extends \Magento\Backend\App\Action
      * @param ScopeConfigInterface $scopeConfig
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      * @param \Magento\Framework\App\Config\Storage\WriterInterface $configWriter
-     * @param \Magento\Framework\Session\SessionManagerInterface $coreSession
+     * @param \Ecomfit\Tracking\Block\Ecomfit $ecomfit
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         ScopeConfigInterface $scopeConfig,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\App\Config\Storage\WriterInterface $configWriter
+        \Magento\Framework\App\Config\Storage\WriterInterface $configWriter,
+        \Ecomfit\Tracking\Block\Ecomfit $ecomfit
     )
     {
         $this->configWriter = $configWriter;
         $this->scopeConfig = $scopeConfig;
         $this->resultPageFactory = $resultPageFactory;
+        $this->ecomfit = $ecomfit;
 
 //        $this->cache = $cache;
         parent::__construct($context);
@@ -46,15 +49,15 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-//        echo $this->scopeConfig->getValue('web_id', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);die;
         $post = $this->getRequest()->getPostValue();
         if ($post) {
-            $_SESSION['webId'] = $post['webId'];
+            $this->ecomfit->setValue($post['webId']);
             $this->configWriter->save('web_id', $post['webId'], $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0);
-            echo "<pre>";
+
             print_r($post);
-            die;
+//            return true;
         }
+
         return $resultPage = $this->resultPageFactory->create();
     }
 }

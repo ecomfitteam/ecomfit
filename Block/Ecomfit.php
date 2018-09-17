@@ -19,7 +19,7 @@ class Ecomfit extends \Magento\Framework\View\Element\Template
     protected $_coreSession;
 
     const ECOMFIT_WEBSITE = "https://ecomfit.com/";
-    const ECOMFIT_URL = "https://app-test.ecomfit.com";
+    const ECOMFIT_URL = "https://app.ecomfit.com";
 
     protected function _prepareLayout()
     {
@@ -27,17 +27,17 @@ class Ecomfit extends \Magento\Framework\View\Element\Template
     }
 
     public function __construct(Context $context,
-                                ScopeConfigInterface $scopeConfig,
                                 \Magento\Backend\Model\Auth\Session $authSession,
                                 Pool $cacheFrontendPool,
                                 \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
     )
 
     {
-        $this->scopeConfig = $scopeConfig;
+        $this->scopeConfig = $context->getScopeConfig();
         $this->authSession = $authSession;
         $this->_cacheFrontendPool = $cacheFrontendPool;
         $this->_cacheTypeList = $cacheTypeList;
+        $this->_coreSession = $context->getSession();
         parent::__construct($context);
     }
 
@@ -68,11 +68,29 @@ class Ecomfit extends \Magento\Framework\View\Element\Template
 
     public function checkSession()
     {
-        if (isset($_SESSION['webId'])) {
-            $_SESSION['webId'] = null;
+        if ($this->getValue() !== null) {
+            $this->unSetValue();
             return true;
         } else {
             return false;
         }
+    }
+
+    public function setValue($value)
+    {
+        $this->_coreSession->start();
+        $this->_coreSession->setMessage($value);
+    }
+
+    public function getValue()
+    {
+        $this->_coreSession->start();
+        return $this->_coreSession->getMessage();
+    }
+
+    public function unSetValue()
+    {
+        $this->_coreSession->start();
+        return $this->_coreSession->unsMessage();
     }
 }
