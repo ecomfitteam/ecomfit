@@ -21,11 +21,13 @@ class Uninstall implements \Magento\Framework\Setup\UninstallInterface
     protected $scopeConfig;
     protected $curlClient;
     protected $getConfigVal;
+    protected $ecomfitAPI;
 
     public function __construct(
         ConfigInterface $scopeConfig,
         \Magento\Framework\HTTP\Client\Curl $curl,
-        \Magento\Framework\App\Config\ScopeConfigInterface $getConfig
+        \Magento\Framework\App\Config\ScopeConfigInterface $getConfig,
+        \Ecomfit\Tracking\Block\Ecomfit $ecomfit
 
     )
 
@@ -33,12 +35,14 @@ class Uninstall implements \Magento\Framework\Setup\UninstallInterface
         $this->scopeConfig = $scopeConfig;
         $this->curlClient = $curl;
         $this->getConfigVal = $getConfig;
+        $this->ecomfitAPI = $ecomfit::ECOMFIT_URL_API;
     }
 
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         //Uninstall logic
-        $this->curlClient->post('http://localhost:4201/api/magento/uninstall',
+
+        $this->curlClient->post($this->ecomfitAPI . '/magento/uninstall',
             ['webId' => $this->getConfigVal->getValue('web_id'),
                 'token' => $this->getConfigVal->getValue('token')]);
         $this->scopeConfig->deleteConfig('web_id');

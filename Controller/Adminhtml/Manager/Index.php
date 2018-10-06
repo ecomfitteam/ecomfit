@@ -54,9 +54,6 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $this->curlClient->post('http://localhost:4201/api/magento/uninstall',
-            ['webId' => $this->scopeConfig->getValue('web_id'),
-                'token' => $this->scopeConfig->getValue('token')]);
         $post = $this->getRequest()->getPostValue();
         if ($post) {
             $this->ecomfit->setValue($post['webId']);

@@ -19,7 +19,8 @@ class Ecomfit extends \Magento\Framework\View\Element\Template
     protected $_coreSession;
 
     const ECOMFIT_WEBSITE = "https://ecomfit.com/";
-    const ECOMFIT_URL = "http://localhost:4200";
+    const ECOMFIT_URL = "https://app.ecomfit.com/";
+    const ECOMFIT_URL_API = "https://app.ecomfit.com/api";
 
     protected function _prepareLayout()
     {
