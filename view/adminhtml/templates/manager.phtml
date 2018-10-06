@@ -168,16 +168,16 @@ if ((!isset($webId) || $webId == null) && !$block->checkSession()) { ?>
         location_pathname: document.location.pathname
     };
 
-    function ecomfitLoginParent(webId) {
+    function ecomfitLoginParent(webId, token) {
         var form = document.createElement("form");
         var webIdElement = document.createElement("input");
 
-        console.log(webId);
         jQuery.ajax({
             url: window.location.href,
             type: 'post',
             data: {
-                webId: webId
+                webId: webId,
+                token: token
             },
             success: function (data) {
                 // alert('success');
@@ -203,10 +203,14 @@ if ((!isset($webId) || $webId == null) && !$block->checkSession()) { ?>
         if (event.data.message === "deliverResult") {
             var data = event.data.result.data;
             var webId = '';
+            var token = '';
             if (data.webId !== undefined) {
                 webId = data.webId;
             }
-            ecomfitLoginParent(webId);
+            if (data.token !== undefined) {
+                token = data.token;
+            }
+            ecomfitLoginParent(webId, token);
             event.source.close();
             clearInterval(ecomfit_interval);
         }

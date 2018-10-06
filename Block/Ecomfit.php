@@ -19,7 +19,7 @@ class Ecomfit extends \Magento\Framework\View\Element\Template
     protected $_coreSession;
 
     const ECOMFIT_WEBSITE = "https://ecomfit.com/";
-    const ECOMFIT_URL = "https://app.ecomfit.com";
+    const ECOMFIT_URL = "http://localhost:4200";
 
     protected function _prepareLayout()
     {
